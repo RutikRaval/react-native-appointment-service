@@ -13,7 +13,7 @@ security and application logging packages
 ==============================*/
 const helmet = require("helmet");
 const cors = require("cors");
-const xss = require("xss-clean");
+// const xss = require("xss-clean");
 const rateLimiter = require("./middlewares/RateLimiterMiddleware");
 const logger = require("morgan");
 
@@ -50,7 +50,7 @@ const app = express();
 app.use(logger(ENVIRONMENT === "development" ? "dev" : "common")); // log everything in console
 app.use(logger("combined", ErrorLogger)); // only log 4XX and 5XX in file
 app.use(helmet());
-app.use(xss());
+// app.use(xss());
 app.use(rateLimiter);
 app.use(cors(constants.corsOptions));
 app.use(express.json());
